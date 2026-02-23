@@ -1,2 +1,9 @@
-# github-intelligence
-Intelligence using GitHub as Infrastructure
+# .github-intelligence
+
+### An AI intelligence that runs entirely in GitHub.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/github-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence">
+  </picture>
+</p>
