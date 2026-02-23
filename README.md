@@ -1,4 +1,4 @@
-# .github-intelligence
+# japer-technology/github-intelligence
 
 ### Intelligence by using GitHub as AI Infrastructure.
 
