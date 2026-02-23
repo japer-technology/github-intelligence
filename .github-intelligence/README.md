@@ -1,16 +1,14 @@
 # .github-intelligence
 
-### Add a GitHub ANTHROPIC_API_KEY Secret and then Issues come alive!
+### An AI intelligence that runs entirely in GitHub.
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="500">
+    <img src="https://raw.githubusercontent.com/japer-technology/github-intelligence/main/.github-intelligence/github-intelligence.png" alt="Issue Intelligence">
   </picture>
 </p>
 
 ### [🦞Quick Start](github-intelligence-QUICKSTART.md) · [🦞Internals](docs/github-intelligence-Internal-Mechanics.md) · [🦞Possibilities](docs/github-intelligence-Possibilities.md) · [🦞Road Map](docs/github-intelligence-Roadmap.md) · [🦞The Idea](docs/github-intelligence-The-Idea.md)
-
-A personal AI assistant that runs entirely through GitHub Issues and Actions. Drop a single `.github-intelligence` folder into any repo and you have a fully functional AI agent — no servers, no external services, no extra infrastructure.
 
 > **New here?** Check the [Quick Start](github-intelligence-QUICKSTART.md) to get running in under 5 minutes.
 
