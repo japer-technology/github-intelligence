@@ -1,4 +1,4 @@
-name: ISSUE-INTELLIGENCE-WORKFLOW-AGENT
+name: github-intelligence-WORKFLOW-AGENT
 
 on:
   issues:
@@ -46,12 +46,12 @@ jobs:
       - name: Guard
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bun .github-intelligence/lifecycle/ISSUE-INTELLIGENCE-ENABLED.ts
+        run: bun .github-intelligence/lifecycle/github-intelligence-ENABLED.ts
 
       - name: Preinstall
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bun .github-intelligence/lifecycle/ISSUE-INTELLIGENCE-INDICATOR.ts
+        run: bun .github-intelligence/lifecycle/github-intelligence-INDICATOR.ts
 
       - name: Install dependencies
         run: cd .github-intelligence && bun install --frozen-lockfile
@@ -60,4 +60,4 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bun .github-intelligence/lifecycle/ISSUE-INTELLIGENCE-AGENT.ts
+        run: bun .github-intelligence/lifecycle/github-intelligence-AGENT.ts

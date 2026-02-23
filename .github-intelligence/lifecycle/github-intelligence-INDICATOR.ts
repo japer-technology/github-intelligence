@@ -1,5 +1,5 @@
 /**
- * ISSUE-INTELLIGENCE-INDICATOR.ts — Adds a 👀 reaction to signal that the agent is working.
+ * github-intelligence-INDICATOR.ts — Adds a 👀 reaction to signal that the agent is working.
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * PURPOSE
@@ -13,10 +13,10 @@
  * LIFECYCLE POSITION
  * ─────────────────────────────────────────────────────────────────────────────
  * Workflow step order:
- *   1. Guard       (ISSUE-INTELLIGENCE-ENABLED.ts)   — verify opt-in sentinel exists
- *   2. Preinstall  (ISSUE-INTELLIGENCE-INDICATOR.ts) ← YOU ARE HERE
+ *   1. Guard       (github-intelligence-ENABLED.ts)   — verify opt-in sentinel exists
+ *   2. Preinstall  (github-intelligence-INDICATOR.ts) ← YOU ARE HERE
  *   3. Install     (bun install)            — install npm/bun dependencies
- *   4. Run         (ISSUE-INTELLIGENCE-AGENT.ts)      — execute the AI coding agent
+ *   4. Run         (github-intelligence-AGENT.ts)      — execute the AI coding agent
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * REACTION STATE HANDOFF
@@ -25,7 +25,7 @@
  * (reaction ID, target type, comment ID if applicable) to a temporary JSON
  * file at `/tmp/reaction-state.json`.
  *
- * `ISSUE-INTELLIGENCE-AGENT.ts` reads that file in its `finally` block and uses the
+ * `github-intelligence-AGENT.ts` reads that file in its `finally` block and uses the
  * stored IDs to DELETE the 👀 reaction once the agent finishes — regardless
  * of whether the run succeeded or failed.  This guarantees the indicator is
  * always cleaned up.
@@ -46,7 +46,7 @@
  * Failures to add the reaction are caught and logged but do NOT abort the
  * workflow — a missing indicator emoji is not a critical error.  The state
  * file is always written (with `reactionId: null` on failure) so that
- * `ISSUE-INTELLIGENCE-AGENT.ts` does not crash when it tries to read it.
+ * `github-intelligence-AGENT.ts` does not crash when it tries to read it.
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * DEPENDENCIES
@@ -86,7 +86,7 @@ async function gh(...args: string[]): Promise<string> {
 }
 
 // ─── Add 👀 reaction ──────────────────────────────────────────────────────────
-// Track three pieces of information that `ISSUE-INTELLIGENCE-AGENT.ts` needs for cleanup:
+// Track three pieces of information that `github-intelligence-AGENT.ts` needs for cleanup:
 //   reactionId     — the numeric GitHub reaction ID returned by the API
 //   reactionTarget — "comment" or "issue" (determines which API endpoint to DELETE)
 //   commentId      — the comment's ID, only set when reactionTarget === "comment"
@@ -118,8 +118,8 @@ try {
   console.error("Failed to add reaction:", e);
 }
 
-// ─── Persist reaction state for ISSUE-INTELLIGENCE-AGENT.ts cleanup ────────────────────
-// Write all fields to a well-known temp path.  `ISSUE-INTELLIGENCE-AGENT.ts` reads this
+// ─── Persist reaction state for github-intelligence-AGENT.ts cleanup ────────────────────
+// Write all fields to a well-known temp path.  `github-intelligence-AGENT.ts` reads this
 // file inside its `finally` block and uses the IDs to DELETE the reaction
 // once the agent finishes — ensuring the indicator is always cleaned up,
 // even if the agent itself throws an error.

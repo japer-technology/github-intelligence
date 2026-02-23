@@ -1,6 +1,6 @@
 /**
  * Phase 0 validation tests — verify that all Foundation-layer features
- * described in .github-intelligence/docs/ISSUE-INTELLIGENCE-Roadmap.md are structurally present.
+ * described in .github-intelligence/docs/github-intelligence-Roadmap.md are structurally present.
  *
  * Run with: node --test .github-intelligence/tests/phase0.test.js
  *        or: bun test .github-intelligence/tests/phase0.test.js
@@ -21,7 +21,7 @@ function readFile(relPath) {
 // ── 1. Trigger on issues.opened and issue_comment.created ──────────────────
 
 describe("Workflow triggers", () => {
-  const workflow = readFile(".github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
+  const workflow = readFile(".github/workflows/github-intelligence-WORKFLOW-AGENT.yml");
 
   it("triggers on issues.opened", () => {
     assert.match(workflow, /issues:\s*\n\s*types:\s*\[.*opened.*\]/);
@@ -32,7 +32,7 @@ describe("Workflow triggers", () => {
   });
 
   it("workflow template also has correct triggers", () => {
-    const template = readFile(".github-intelligence/install/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
+    const template = readFile(".github-intelligence/install/github-intelligence-WORKFLOW-AGENT.yml");
     assert.match(template, /issues:\s*\n\s*types:\s*\[.*opened.*\]/);
     assert.match(template, /issue_comment:\s*\n\s*types:\s*\[.*created.*\]/);
   });
@@ -41,7 +41,7 @@ describe("Workflow triggers", () => {
 // ── 2. Authorization gating ────────────────────────────────────────────────
 
 describe("Authorization gating", () => {
-  const workflow = readFile(".github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
+  const workflow = readFile(".github/workflows/github-intelligence-WORKFLOW-AGENT.yml");
 
   it("has an Authorize step that checks collaborator permission", () => {
     assert.ok(workflow.includes("name: Authorize"));
@@ -80,17 +80,17 @@ describe("Session persistence", () => {
   });
 
   it("agent script references sessions directory", () => {
-    const agent = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-AGENT.ts");
+    const agent = readFile(".github-intelligence/lifecycle/github-intelligence-AGENT.ts");
     assert.ok(agent.includes("state/sessions"));
   });
 
   it("agent script uses JSONL session format", () => {
-    const agent = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-AGENT.ts");
+    const agent = readFile(".github-intelligence/lifecycle/github-intelligence-AGENT.ts");
     assert.ok(agent.includes(".jsonl"));
   });
 
   it("agent script handles session resumption", () => {
-    const agent = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-AGENT.ts");
+    const agent = readFile(".github-intelligence/lifecycle/github-intelligence-AGENT.ts");
     assert.ok(agent.includes("--session"));
     assert.ok(agent.includes('mode = "resume"'));
   });
@@ -104,13 +104,13 @@ describe("Issue-session mapping", () => {
   });
 
   it("agent script writes mapping files", () => {
-    const agent = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-AGENT.ts");
+    const agent = readFile(".github-intelligence/lifecycle/github-intelligence-AGENT.ts");
     assert.ok(agent.includes("mappingFile"));
     assert.ok(agent.includes("writeFileSync"));
   });
 
   it("mapping includes issueNumber and sessionPath", () => {
-    const agent = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-AGENT.ts");
+    const agent = readFile(".github-intelligence/lifecycle/github-intelligence-AGENT.ts");
     assert.ok(agent.includes("issueNumber"));
     assert.ok(agent.includes("sessionPath"));
   });
@@ -121,30 +121,30 @@ describe("Issue-session mapping", () => {
 describe("Reaction indicator", () => {
   it("indicator script exists", () => {
     assert.ok(
-      fs.existsSync(path.join(ISSUE_INTELLIGENCE, "lifecycle", "ISSUE-INTELLIGENCE-INDICATOR.ts"))
+      fs.existsSync(path.join(ISSUE_INTELLIGENCE, "lifecycle", "github-intelligence-INDICATOR.ts"))
     );
   });
 
   it("indicator adds eyes reaction", () => {
-    const indicator = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-INDICATOR.ts");
+    const indicator = readFile(".github-intelligence/lifecycle/github-intelligence-INDICATOR.ts");
     assert.ok(indicator.includes("content=eyes"));
   });
 
   it("indicator persists reaction state to /tmp", () => {
-    const indicator = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-INDICATOR.ts");
+    const indicator = readFile(".github-intelligence/lifecycle/github-intelligence-INDICATOR.ts");
     assert.ok(indicator.includes("/tmp/reaction-state.json"));
   });
 
   it("agent script removes reaction in finally block", () => {
-    const agent = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-AGENT.ts");
+    const agent = readFile(".github-intelligence/lifecycle/github-intelligence-AGENT.ts");
     assert.ok(agent.includes("finally"));
     assert.ok(agent.includes("reactionId"));
     assert.ok(agent.includes("DELETE"));
   });
 
   it("workflow runs indicator before install", () => {
-    const workflow = readFile(".github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
-    const indicatorIdx = workflow.indexOf("ISSUE-INTELLIGENCE-INDICATOR");
+    const workflow = readFile(".github/workflows/github-intelligence-WORKFLOW-AGENT.yml");
+    const indicatorIdx = workflow.indexOf("github-intelligence-INDICATOR");
     const installIdx = workflow.indexOf("bun install");
     assert.ok(indicatorIdx > 0 && installIdx > 0);
     assert.ok(
@@ -157,7 +157,7 @@ describe("Reaction indicator", () => {
 // ── 6. Commit + push state to main with retry-on-conflict ──────────────────
 
 describe("Commit and push with retry", () => {
-  const agent = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-AGENT.ts");
+  const agent = readFile(".github-intelligence/lifecycle/github-intelligence-AGENT.ts");
 
   it("stages all changes with git add", () => {
     assert.ok(agent.includes('"git", "add"'));
@@ -261,32 +261,32 @@ describe("Configurable personality", () => {
 describe("Fail-closed guard", () => {
   it("sentinel file exists", () => {
     assert.ok(
-      fs.existsSync(path.join(ISSUE_INTELLIGENCE, "ISSUE-INTELLIGENCE-ENABLED.md"))
+      fs.existsSync(path.join(ISSUE_INTELLIGENCE, "github-intelligence-ENABLED.md"))
     );
   });
 
   it("guard script exists", () => {
     assert.ok(
-      fs.existsSync(path.join(ISSUE_INTELLIGENCE, "lifecycle", "ISSUE-INTELLIGENCE-ENABLED.ts"))
+      fs.existsSync(path.join(ISSUE_INTELLIGENCE, "lifecycle", "github-intelligence-ENABLED.ts"))
     );
   });
 
   it("guard checks for sentinel file", () => {
-    const guard = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-ENABLED.ts");
-    assert.ok(guard.includes("ISSUE-INTELLIGENCE-ENABLED.md"));
+    const guard = readFile(".github-intelligence/lifecycle/github-intelligence-ENABLED.ts");
+    assert.ok(guard.includes("github-intelligence-ENABLED.md"));
     assert.ok(guard.includes("existsSync"));
   });
 
   it("guard exits non-zero when sentinel missing", () => {
-    const guard = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-ENABLED.ts");
+    const guard = readFile(".github-intelligence/lifecycle/github-intelligence-ENABLED.ts");
     assert.ok(guard.includes("process.exit(1)"));
   });
 
   it("workflow runs guard before indicator and agent", () => {
-    const workflow = readFile(".github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
-    const guardIdx = workflow.indexOf("ISSUE-INTELLIGENCE-ENABLED");
-    const indicatorIdx = workflow.indexOf("ISSUE-INTELLIGENCE-INDICATOR");
-    const agentIdx = workflow.indexOf("ISSUE-INTELLIGENCE-AGENT");
+    const workflow = readFile(".github/workflows/github-intelligence-WORKFLOW-AGENT.yml");
+    const guardIdx = workflow.indexOf("github-intelligence-ENABLED");
+    const indicatorIdx = workflow.indexOf("github-intelligence-INDICATOR");
+    const agentIdx = workflow.indexOf("github-intelligence-AGENT");
     assert.ok(guardIdx > 0);
     assert.ok(guardIdx < indicatorIdx, "Guard must run before indicator");
     assert.ok(guardIdx < agentIdx, "Guard must run before agent");
@@ -298,7 +298,7 @@ describe("Fail-closed guard", () => {
 describe("Install templates", () => {
   it("hatch template has valid frontmatter", () => {
     const template = readFile(
-      ".github-intelligence/install/ISSUE-INTELLIGENCE-TEMPLATE-HATCH.md"
+      ".github-intelligence/install/github-intelligence-TEMPLATE-HATCH.md"
     );
     assert.ok(
       template.startsWith("---"),
@@ -310,7 +310,7 @@ describe("Install templates", () => {
 
   it("workflow template has checkout with ref and fetch-depth", () => {
     const template = readFile(
-      ".github-intelligence/install/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml"
+      ".github-intelligence/install/github-intelligence-WORKFLOW-AGENT.yml"
     );
     assert.ok(
       template.includes("github.event.repository.default_branch"),
@@ -324,9 +324,9 @@ describe("Install templates", () => {
 
   it("workflow template matches live workflow triggers", () => {
     const template = readFile(
-      ".github-intelligence/install/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml"
+      ".github-intelligence/install/github-intelligence-WORKFLOW-AGENT.yml"
     );
-    const live = readFile(".github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
+    const live = readFile(".github/workflows/github-intelligence-WORKFLOW-AGENT.yml");
     // Both should have the same trigger structure
     assert.ok(template.includes("issues:"));
     assert.ok(template.includes("issue_comment:"));
@@ -336,9 +336,9 @@ describe("Install templates", () => {
 
   it("workflow template name matches live workflow name", () => {
     const template = readFile(
-      ".github-intelligence/install/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml"
+      ".github-intelligence/install/github-intelligence-WORKFLOW-AGENT.yml"
     );
-    const live = readFile(".github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
+    const live = readFile(".github/workflows/github-intelligence-WORKFLOW-AGENT.yml");
     const templateName = template.match(/^name:\s*(.+)$/m)?.[1];
     const liveName = live.match(/^name:\s*(.+)$/m)?.[1];
     assert.ok(templateName, "Template should have a name field");
@@ -350,10 +350,10 @@ describe("Install templates", () => {
 // ── Requires-heart gate ────────────────────────────────────────────────────
 
 describe("Requires-heart gate", () => {
-  const guard = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-ENABLED.ts");
+  const guard = readFile(".github-intelligence/lifecycle/github-intelligence-ENABLED.ts");
 
-  it("guard script checks for ISSUE-INTELLIGENCE-HEART-REQUIRED.md file", () => {
-    assert.ok(guard.includes("ISSUE-INTELLIGENCE-HEART-REQUIRED.md"));
+  it("guard script checks for github-intelligence-HEART-REQUIRED.md file", () => {
+    assert.ok(guard.includes("github-intelligence-HEART-REQUIRED.md"));
     assert.ok(guard.includes("existsSync"));
   });
 
@@ -372,7 +372,7 @@ describe("Requires-heart gate", () => {
   });
 
   it("workflow passes GITHUB_TOKEN to Guard step", () => {
-    const workflow = readFile(".github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
+    const workflow = readFile(".github/workflows/github-intelligence-WORKFLOW-AGENT.yml");
     // Find the Guard step section and verify it has GITHUB_TOKEN
     const guardSection = workflow.slice(
       workflow.indexOf("name: Guard"),
@@ -385,7 +385,7 @@ describe("Requires-heart gate", () => {
   });
 
   it("workflow template also passes GITHUB_TOKEN to Guard step", () => {
-    const template = readFile(".github-intelligence/install/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
+    const template = readFile(".github-intelligence/install/github-intelligence-WORKFLOW-AGENT.yml");
     const guardSection = template.slice(
       template.indexOf("name: Guard"),
       template.indexOf("name: Preinstall")
@@ -400,7 +400,7 @@ describe("Requires-heart gate", () => {
 // ── Error handling and observability ───────────────────────────────────────
 
 describe("Error handling", () => {
-  const agent = readFile(".github-intelligence/lifecycle/ISSUE-INTELLIGENCE-AGENT.ts");
+  const agent = readFile(".github-intelligence/lifecycle/github-intelligence-AGENT.ts");
 
   it("gh() helper checks exit code", () => {
     assert.ok(agent.includes("exitCode !== 0"));
@@ -438,8 +438,8 @@ describe("Error handling", () => {
 // ── Concurrency handling for parallel issue processing ─────────────────────
 
 describe("Concurrency handling", () => {
-  const workflow = readFile(".github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
-  const template = readFile(".github-intelligence/install/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml");
+  const workflow = readFile(".github/workflows/github-intelligence-WORKFLOW-AGENT.yml");
+  const template = readFile(".github-intelligence/install/github-intelligence-WORKFLOW-AGENT.yml");
 
   it("workflow has concurrency group scoped to issue number", () => {
     assert.ok(

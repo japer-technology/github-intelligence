@@ -1,5 +1,5 @@
 /**
- * ISSUE-INTELLIGENCE-AGENT.ts — Core agent orchestrator for Issue Intelligence.
+ * github-intelligence-AGENT.ts — Core agent orchestrator for Issue Intelligence.
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * PURPOSE
@@ -14,10 +14,10 @@
  * LIFECYCLE POSITION
  * ─────────────────────────────────────────────────────────────────────────────
  * Workflow step order:
- *   1. Guard       (ISSUE-INTELLIGENCE-ENABLED.ts)   — verify opt-in sentinel exists
- *   2. Preinstall  (ISSUE-INTELLIGENCE-INDICATOR.ts) — add 👀 reaction indicator
+ *   1. Guard       (github-intelligence-ENABLED.ts)   — verify opt-in sentinel exists
+ *   2. Preinstall  (github-intelligence-INDICATOR.ts) — add 👀 reaction indicator
  *   3. Install     (bun install)            — install npm/bun dependencies
- *   4. Run         (ISSUE-INTELLIGENCE-AGENT.ts)     ← YOU ARE HERE
+ *   4. Run         (github-intelligence-AGENT.ts)     ← YOU ARE HERE
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * AGENT EXECUTION PIPELINE
@@ -36,7 +36,7 @@
  *   7. Stage, commit, and push all changes (session log, mapping, repo edits)
  *      back to the default branch with an automatic retry-on-conflict loop.
  *   8. Post the extracted reply as a new comment on the originating issue.
- *   9. [finally] Remove the 👀 reaction that `ISSUE-INTELLIGENCE-INDICATOR.ts` added,
+ *   9. [finally] Remove the 👀 reaction that `github-intelligence-INDICATOR.ts` added,
  *      guaranteeing cleanup even if the agent threw an unhandled error.
  *
  * ─────────────────────────────────────────────────────────────────────────────
@@ -166,8 +166,8 @@ async function gh(...args: string[]): Promise<string> {
   return stdout;
 }
 
-// ─── Restore reaction state from ISSUE-INTELLIGENCE-INDICATOR.ts ────────────────────────
-// `ISSUE-INTELLIGENCE-INDICATOR.ts` runs before dependency installation and writes the 👀
+// ─── Restore reaction state from github-intelligence-INDICATOR.ts ────────────────────────
+// `github-intelligence-INDICATOR.ts` runs before dependency installation and writes the 👀
 // reaction metadata to `/tmp/reaction-state.json`.  We read it here so the
 // `finally` block can delete the reaction when the agent finishes (or errors).
 // If the file is absent (e.g., indicator step was skipped), we default to null.

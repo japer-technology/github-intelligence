@@ -4,15 +4,15 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/ISSUE-INTELLIGENCE-LOGO.png" alt="Issue Intelligence" width="500">
+    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="500">
   </picture>
 </p>
 
-### [🦞Quick Start](ISSUE-INTELLIGENCE-QUICKSTART.md) · [🦞Internals](docs/ISSUE-INTELLIGENCE-Internal-Mechanics.md) · [🦞Possibilities](docs/ISSUE-INTELLIGENCE-Possibilities.md) · [🦞Road Map](docs/ISSUE-INTELLIGENCE-Roadmap.md) · [🦞The Idea](docs/ISSUE-INTELLIGENCE-The-Idea.md)
+### [🦞Quick Start](github-intelligence-QUICKSTART.md) · [🦞Internals](docs/github-intelligence-Internal-Mechanics.md) · [🦞Possibilities](docs/github-intelligence-Possibilities.md) · [🦞Road Map](docs/github-intelligence-Roadmap.md) · [🦞The Idea](docs/github-intelligence-The-Idea.md)
 
 A personal AI assistant that runs entirely through GitHub Issues and Actions. Drop a single `.github-intelligence` folder into any repo and you have a fully functional AI agent — no servers, no external services, no extra infrastructure.
 
-> **New here?** Check the [Quick Start](ISSUE-INTELLIGENCE-QUICKSTART.md) to get running in under 5 minutes.
+> **New here?** Check the [Quick Start](github-intelligence-QUICKSTART.md) to get running in under 5 minutes.
 
 Powered by the [pi coding agent](https://github.com/badlogic/pi-mono). Every issue becomes a chat thread with an AI agent. Conversation history is committed to git, giving the agent long-term memory across sessions. It can search prior context, edit or summarize past conversations, and all changes are versioned.
 
@@ -60,7 +60,7 @@ issue-intelligence lives entirely inside a `.github-intelligence` folder that yo
 1. **Copy the `.github-intelligence` folder** into your repo's root.
 2. **Run the install script** to set up workflows and templates:
    ```bash
-   bun .github-intelligence/install/ISSUE-INTELLIGENCE-INSTALLER.ts
+   bun .github-intelligence/install/github-intelligence-INSTALLER.ts
    ```
 3. **Install dependencies:**
    ```bash
@@ -70,7 +70,7 @@ issue-intelligence lives entirely inside a `.github-intelligence` folder that yo
 5. **Commit and push** the changes.
 6. **Open an issue** — the agent starts automatically.
 
-> **Automated install:** You can also copy `ISSUE-INTELLIGENCE-INSTALLER.yml` to `.github/workflows/` and trigger the bootstrap workflow from the Actions tab. See [install/README.md](install/README.md) for details.
+> **Automated install:** You can also copy `github-intelligence-INSTALLER.yml` to `.github/workflows/` and trigger the bootstrap workflow from the Actions tab. See [install/README.md](install/README.md) for details.
 
 The install script copies the workflow and issue template into the right places. Agent identity and instructions live in `.github-intelligence/AGENTS.md`. Everything issue-intelligence needs to run lives inside `.github-intelligence/`.
 
@@ -88,21 +88,21 @@ Use the **🥚 Hatch** issue template (or create an issue with the `hatch` label
     BOOTSTRAP.md                    # First-run identity prompt
     skills/                         # Modular skill packages
   install/
-    ISSUE-INTELLIGENCE-INSTALLER.ts            # Setup script — installs workflows & templates
-    ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml      # GitHub Actions workflow template
-    ISSUE-INTELLIGENCE-TEMPLATE-HATCH.md       # Issue template for personality hatching
-    ISSUE-INTELLIGENCE-AGENTS.md               # Default agent identity file
+    github-intelligence-INSTALLER.ts            # Setup script — installs workflows & templates
+    github-intelligence-WORKFLOW-AGENT.yml      # GitHub Actions workflow template
+    github-intelligence-TEMPLATE-HATCH.md       # Issue template for personality hatching
+    github-intelligence-AGENTS.md               # Default agent identity file
     package.json                    # Installer dependencies
   lifecycle/
-    ISSUE-INTELLIGENCE-AGENT.ts                # Core agent orchestrator
-    ISSUE-INTELLIGENCE-INDICATOR.ts            # Adds/removes 👀 reaction on issue activity
-    ISSUE-INTELLIGENCE-ENABLED.ts              # Fail-closed guard — verifies opt-in sentinel
+    github-intelligence-AGENT.ts                # Core agent orchestrator
+    github-intelligence-INDICATOR.ts            # Adds/removes 👀 reaction on issue activity
+    github-intelligence-ENABLED.ts              # Fail-closed guard — verifies opt-in sentinel
   docs/                             # Architecture, roadmap, and design docs
   tests/                            # Validation tests
   state/                            # Session history and issue mappings (git-tracked)
   AGENTS.md                         # Agent identity file
-  ISSUE-INTELLIGENCE-ENABLED.md                # Sentinel file — delete to disable the agent
-  ISSUE-INTELLIGENCE-QUICKSTART.md             # Quick start guide
+  github-intelligence-ENABLED.md                # Sentinel file — delete to disable the agent
+  github-intelligence-QUICKSTART.md             # Quick start guide
   LICENSE.md                        # MIT license
   package.json                      # Runtime dependencies
 ```
@@ -122,13 +122,13 @@ Set `defaultProvider` and `defaultModel` in `.github-intelligence/.pi/settings.j
 | Groq | `groq` | `deepseek-r1-distill-llama-70b` | `GROQ_API_KEY` |
 | OpenRouter | `openrouter` | any model on [openrouter.ai](https://openrouter.ai/) | `OPENROUTER_API_KEY` |
 
-> **Tip:** See the [Quick Start](ISSUE-INTELLIGENCE-QUICKSTART.md#common-tweaks) for copy-paste `settings.json` examples for each provider.
+> **Tip:** See the [Quick Start](github-intelligence-QUICKSTART.md#common-tweaks) for copy-paste `settings.json` examples for each provider.
 
 ## Security
 
 The workflow only responds to repository **owners, members, and collaborators**. Random users cannot trigger the agent on public repos.
 
-The agent uses a **fail-closed guard**: every workflow run checks for the sentinel file `ISSUE-INTELLIGENCE-ENABLED.md`. If it's missing, the workflow exits immediately. Delete or rename this file to disable the agent without removing any code.
+The agent uses a **fail-closed guard**: every workflow run checks for the sentinel file `github-intelligence-ENABLED.md`. If it's missing, the workflow exits immediately. Delete or rename this file to disable the agent without removing any code.
 
 If you plan to use issue-intelligence for anything private, **make the repo private**. Public repos mean your conversation history is visible to everyone, but get generous GitHub Actions usage.
 
@@ -144,9 +144,9 @@ If you plan to use issue-intelligence for anything private, **make the repo priv
 }
 ```
 
-**Make it read-only** — add `--tools read,grep,find,ls` to the agent args in `lifecycle/ISSUE-INTELLIGENCE-AGENT.ts`.
+**Make it read-only** — add `--tools read,grep,find,ls` to the agent args in `lifecycle/github-intelligence-AGENT.ts`.
 
-**Filter by label** — edit `.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml` to only trigger on issues with a specific label.
+**Filter by label** — edit `.github/workflows/github-intelligence-WORKFLOW-AGENT.yml` to only trigger on issues with a specific label.
 
 **Adjust thinking level** — set `defaultThinkingLevel` to `"low"`, `"medium"`, or `"high"` in `settings.json` for different task complexities.
 
@@ -154,14 +154,14 @@ If you plan to use issue-intelligence for anything private, **make the repo priv
 
 | Document | Description |
 |---|---|
-| [Quick Start](ISSUE-INTELLIGENCE-QUICKSTART.md) | Get running in under 5 minutes — setup, providers, and common tweaks |
-| [The Idea](docs/ISSUE-INTELLIGENCE-The-Idea.md) | The philosophical vision — why a repo-native AI agent matters |
-| [Internal Mechanics](docs/ISSUE-INTELLIGENCE-Internal-Mechanics.md) | Architecture, workflow steps, session management, and data model |
-| [Possibilities](docs/ISSUE-INTELLIGENCE-Possibilities.md) | Current and future use cases, skill ideas, and design space |
-| [GitHub Possibilities](docs/ISSUE-INTELLIGENCE-The-GitHub-Possibilities.md) | Analysis of every GitHub platform feature and what it means for Issue Intelligence |
-| [Roadmap](docs/ISSUE-INTELLIGENCE-Roadmap.md) | Phased plan from issue bot to full-platform agent |
-| [Cloud vs Local](docs/ISSUE-INTELLIGENCE-Cloud-vs-Local.md) | Cloud (GitHub Actions) vs Local (pi CLI) — UX, capabilities, and trade-offs |
-| [Pi Agent Docs](docs/ISSUE-INTELLIGENCE-Pi/ISSUE-INTELLIGENCE-Pi-README.md) | Deep dive into the `.pi` agent configuration system |
+| [Quick Start](github-intelligence-QUICKSTART.md) | Get running in under 5 minutes — setup, providers, and common tweaks |
+| [The Idea](docs/github-intelligence-The-Idea.md) | The philosophical vision — why a repo-native AI agent matters |
+| [Internal Mechanics](docs/github-intelligence-Internal-Mechanics.md) | Architecture, workflow steps, session management, and data model |
+| [Possibilities](docs/github-intelligence-Possibilities.md) | Current and future use cases, skill ideas, and design space |
+| [GitHub Possibilities](docs/github-intelligence-The-GitHub-Possibilities.md) | Analysis of every GitHub platform feature and what it means for Issue Intelligence |
+| [Roadmap](docs/github-intelligence-Roadmap.md) | Phased plan from issue bot to full-platform agent |
+| [Cloud vs Local](docs/github-intelligence-Cloud-vs-Local.md) | Cloud (GitHub Actions) vs Local (pi CLI) — UX, capabilities, and trade-offs |
+| [Pi Agent Docs](docs/github-intelligence-Pi/github-intelligence-Pi-README.md) | Deep dive into the `.pi` agent configuration system |
 | [Install Guide](install/README.md) | Detailed install process and installer workflow reference |
 
 ## Acknowledgments

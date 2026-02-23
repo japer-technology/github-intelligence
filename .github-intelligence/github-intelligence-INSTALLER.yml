@@ -1,4 +1,4 @@
-name: ISSUE-INTELLIGENCE Installer (Move to .github/workflows to execute, the master version lives .github-intelligence/ISSUE-INTELLIGENCE-INSTALLER.yml)
+name: ISSUE-INTELLIGENCE Installer (Move to .github/workflows to execute, the master version lives .github-intelligence/github-intelligence-INSTALLER.yml)
 
 on:
   workflow_dispatch:
@@ -18,10 +18,10 @@ on:
         type: string
   push:
     paths:
-      - '.github/workflows/ISSUE-INTELLIGENCE-INSTALLER.yml'
+      - '.github/workflows/github-intelligence-INSTALLER.yml'
   workflow_run:
     workflows:
-      - 'ISSUE-INTELLIGENCE-WORKFLOW-AGENT'
+      - 'github-intelligence-WORKFLOW-AGENT'
     types:
       - completed
 
@@ -170,7 +170,7 @@ jobs:
 
           mkdir -p "$DEST_DIR"
 
-          for src in "$SRC_DIR"/ISSUE-INTELLIGENCE-TEMPLATE-*; do
+          for src in "$SRC_DIR"/github-intelligence-TEMPLATE-*; do
             [ -f "$src" ] || continue
             filename="$(basename "$src")"
             dest="$DEST_DIR/$filename"
@@ -223,13 +223,13 @@ jobs:
 
       - name: Mark installation complete
         run: |
-          if [ -f ".github-intelligence/ISSUE-INTELLIGENCE-NOT-INSTALLED.md" ]; then
-            mv ".github-intelligence/ISSUE-INTELLIGENCE-NOT-INSTALLED.md" ".github-intelligence/ISSUE-INTELLIGENCE-INSTALLED.md"
-            echo "::notice::Renamed ISSUE-INTELLIGENCE-NOT-INSTALLED.md → ISSUE-INTELLIGENCE-INSTALLED.md"
-          elif [ -f ".github-intelligence/ISSUE-INTELLIGENCE-INSTALLED.md" ]; then
-            echo "::notice::ISSUE-INTELLIGENCE-INSTALLED.md already exists — install verified"
+          if [ -f ".github-intelligence/github-intelligence-NOT-INSTALLED.md" ]; then
+            mv ".github-intelligence/github-intelligence-NOT-INSTALLED.md" ".github-intelligence/github-intelligence-INSTALLED.md"
+            echo "::notice::Renamed github-intelligence-NOT-INSTALLED.md → github-intelligence-INSTALLED.md"
+          elif [ -f ".github-intelligence/github-intelligence-INSTALLED.md" ]; then
+            echo "::notice::github-intelligence-INSTALLED.md already exists — install verified"
           else
-            echo "::warning::Neither ISSUE-INTELLIGENCE-NOT-INSTALLED.md nor ISSUE-INTELLIGENCE-INSTALLED.md found"
+            echo "::warning::Neither github-intelligence-NOT-INSTALLED.md nor github-intelligence-INSTALLED.md found"
           fi
 
       - name: Check for changes

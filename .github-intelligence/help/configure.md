@@ -4,7 +4,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/ISSUE-INTELLIGENCE-LOGO.png" alt="Issue Intelligence" width="400">
+    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="400">
   </picture>
 </p>
 
@@ -21,7 +21,7 @@ Customize the LLM provider, model, agent personality, thinking level, tool acces
 | `.github-intelligence/.pi/APPEND_SYSTEM.md` | System prompt loaded every session |
 | `.github-intelligence/.pi/BOOTSTRAP.md` | First-run identity prompt (used during hatching) |
 | `.github-intelligence/.pi/skills/` | Modular skill packages |
-| `.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml` | Workflow triggers, permissions, and environment variables |
+| `.github/workflows/github-intelligence-WORKFLOW-AGENT.yml` | Workflow triggers, permissions, and environment variables |
 
 ## Change the LLM Provider and Model
 
@@ -215,7 +215,7 @@ Edit `.github-intelligence/.pi/APPEND_SYSTEM.md` to change the system-level inst
 
 ## Make the Agent Read-Only
 
-To restrict the agent to read-only operations (no file edits, no git pushes of code changes), add `--tools read,grep,find,ls` to the agent arguments in `lifecycle/ISSUE-INTELLIGENCE-AGENT.ts`.
+To restrict the agent to read-only operations (no file edits, no git pushes of code changes), add `--tools read,grep,find,ls` to the agent arguments in `lifecycle/github-intelligence-AGENT.ts`.
 
 This is useful when you want the agent to answer questions about the codebase without making modifications.
 
@@ -238,21 +238,21 @@ API keys are stored as GitHub repository secrets and passed to the workflow as e
 
 ### Reference the secret in the workflow
 
-In `.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml`, add the secret as an environment variable in the **Run** step:
+In `.github/workflows/github-intelligence-WORKFLOW-AGENT.yml`, add the secret as an environment variable in the **Run** step:
 
 ```yaml
 - name: Run
   env:
     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  run: bun .github-intelligence/lifecycle/ISSUE-INTELLIGENCE-AGENT.ts
+  run: bun .github-intelligence/lifecycle/github-intelligence-AGENT.ts
 ```
 
 If you switch providers, update this block to reference the new secret name.
 
 ## Require Heart Approval on New Issues
 
-You can gate newly opened issues behind a ❤️ reaction by creating the `ISSUE-INTELLIGENCE-HEART-REQUIRED.md` file in the `.github-intelligence/` directory. When active, the agent only processes new issues that have received a heart reaction.
+You can gate newly opened issues behind a ❤️ reaction by creating the `github-intelligence-HEART-REQUIRED.md` file in the `.github-intelligence/` directory. When active, the agent only processes new issues that have received a heart reaction.
 
 See [❤️ Requires-Heart Gate](requires-heart.md) for full details.
 

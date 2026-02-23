@@ -1,10 +1,10 @@
 # .github-intelligence 🦞 Install
 
-### These files are installed by ISSUE-INTELLIGENCE-INSTALLER.yml
+### These files are installed by github-intelligence-INSTALLER.yml
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/ISSUE-INTELLIGENCE-LOGO.png" alt="Issue Intelligence" width="500">
+    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="500">
   </picture>
 </p>
 
@@ -14,10 +14,10 @@ Everything in this folder is intentionally flat (no nested subfolders) so it can
 
 ## Files in this folder
 
-- `ISSUE-INTELLIGENCE-INSTALLER.ts` — one-time installer script.
-- `ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml` — GitHub Actions workflow template copied to `.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml`.
-- `ISSUE-INTELLIGENCE-TEMPLATE-HATCH.md` — issue template copied to `.github/ISSUE_TEMPLATE/hatch.md`.
-- `ISSUE-INTELLIGENCE-AGENTS.md` — default agent identity/instructions copied to `.github-intelligence/AGENTS.md`.
+- `github-intelligence-INSTALLER.ts` — one-time installer script.
+- `github-intelligence-WORKFLOW-AGENT.yml` — GitHub Actions workflow template copied to `.github/workflows/github-intelligence-WORKFLOW-AGENT.yml`.
+- `github-intelligence-TEMPLATE-HATCH.md` — issue template copied to `.github/ISSUE_TEMPLATE/hatch.md`.
+- `github-intelligence-AGENTS.md` — default agent identity/instructions copied to `.github-intelligence/AGENTS.md`.
 - `package.json` and `package-lock.json` — runtime dependencies for the scripts under `.github-intelligence/`.
 
 ## Install process (step-by-step)
@@ -30,16 +30,16 @@ The expected layout is:
 <repo>/
   .github-intelligence/
     install/
-      ISSUE-INTELLIGENCE-INSTALLER.ts
-      ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml
-      ISSUE-INTELLIGENCE-TEMPLATE-HATCH.md
-      ISSUE-INTELLIGENCE-AGENTS.md
+      github-intelligence-INSTALLER.ts
+      github-intelligence-WORKFLOW-AGENT.yml
+      github-intelligence-TEMPLATE-HATCH.md
+      github-intelligence-AGENTS.md
       package.json
       package-lock.json
     lifecycle/
-      ISSUE-INTELLIGENCE-AGENT.ts
-      ISSUE-INTELLIGENCE-INDICATOR.ts
-      ISSUE-INTELLIGENCE-ENABLED.ts
+      github-intelligence-AGENT.ts
+      github-intelligence-INDICATOR.ts
+      github-intelligence-ENABLED.ts
 ```
 
 ### 2) Run the installer
@@ -47,7 +47,7 @@ The expected layout is:
 From the repository root:
 
 ```bash
-bun .github-intelligence/install/ISSUE-INTELLIGENCE-INSTALLER.ts
+bun .github-intelligence/install/github-intelligence-INSTALLER.ts
 ```
 
 The installer is **non-destructive**:
@@ -55,13 +55,13 @@ The installer is **non-destructive**:
 - If a destination file already exists, it skips it.
 - If a destination file is missing, it installs it.
 
-### 3) What `ISSUE-INTELLIGENCE-INSTALLER.ts` installs
+### 3) What `github-intelligence-INSTALLER.ts` installs
 
 The script installs the following resources:
 
-1. `.github-intelligence/install/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml` → `.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml`
-2. `.github-intelligence/install/ISSUE-INTELLIGENCE-TEMPLATE-HATCH.md` → `.github/ISSUE_TEMPLATE/hatch.md`
-3. `.github-intelligence/install/ISSUE-INTELLIGENCE-AGENTS.md` → `.github-intelligence/AGENTS.md`
+1. `.github-intelligence/install/github-intelligence-WORKFLOW-AGENT.yml` → `.github/workflows/github-intelligence-WORKFLOW-AGENT.yml`
+2. `.github-intelligence/install/github-intelligence-TEMPLATE-HATCH.md` → `.github/ISSUE_TEMPLATE/hatch.md`
+3. `.github-intelligence/install/github-intelligence-AGENTS.md` → `.github-intelligence/AGENTS.md`
 4. Ensures `.gitattributes` contains:
 
 ```text
@@ -85,20 +85,20 @@ bun install
 
 ### 6) (Optional) Enable the automated installer workflow
 
-`ISSUE-INTELLIGENCE-INSTALLER.yml` is a reusable GitHub Actions workflow that bootstraps issue-intelligence automatically whenever changes to `.github-intelligence/**` are pushed, or on demand via `workflow_dispatch`.
+`github-intelligence-INSTALLER.yml` is a reusable GitHub Actions workflow that bootstraps issue-intelligence automatically whenever changes to `.github-intelligence/**` are pushed, or on demand via `workflow_dispatch`.
 
 To activate it:
 
-1. Copy `.github-intelligence/ISSUE-INTELLIGENCE-INSTALLER.yml` into your `.github/workflows/` folder:
+1. Copy `.github-intelligence/github-intelligence-INSTALLER.yml` into your `.github/workflows/` folder:
 
    ```bash
-   cp .github-intelligence/ISSUE-INTELLIGENCE-INSTALLER.yml .github/workflows/ISSUE-INTELLIGENCE-INSTALLER.yml
+   cp .github-intelligence/github-intelligence-INSTALLER.yml .github/workflows/github-intelligence-INSTALLER.yml
    ```
 
 2. Commit and push:
 
    ```bash
-   git add .github/workflows/ISSUE-INTELLIGENCE-INSTALLER.yml
+   git add .github/workflows/github-intelligence-INSTALLER.yml
    git commit -m "chore: add ISSUE-INTELLIGENCE installer workflow"
    git push
    ```

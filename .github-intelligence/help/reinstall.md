@@ -4,7 +4,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/ISSUE-INTELLIGENCE-LOGO.png" alt="Issue Intelligence" width="400">
+    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="400">
   </picture>
 </p>
 
@@ -56,11 +56,11 @@ cp /tmp/APPEND_SYSTEM.md.bak .github-intelligence/.pi/APPEND_SYSTEM.md
 ### 4. Run the installer and install dependencies
 
 ```bash
-bun .github-intelligence/install/ISSUE-INTELLIGENCE-INSTALLER.ts
+bun .github-intelligence/install/github-intelligence-INSTALLER.ts
 cd .github-intelligence && bun install
 ```
 
-> The installer never overwrites existing files — it only creates missing ones. This means your existing `ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml` workflow will remain as-is. If the workflow template has changed, delete `.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml` before running the installer to get the latest version.
+> The installer never overwrites existing files — it only creates missing ones. This means your existing `github-intelligence-WORKFLOW-AGENT.yml` workflow will remain as-is. If the workflow template has changed, delete `.github/workflows/github-intelligence-WORKFLOW-AGENT.yml` before running the installer to get the latest version.
 
 ### 5. Commit and push
 
@@ -78,7 +78,7 @@ To completely reset Issue Intelligence, including all conversation history:
 
 ```bash
 rm -rf .github-intelligence
-rm -f .github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml
+rm -f .github/workflows/github-intelligence-WORKFLOW-AGENT.yml
 rm -f .github/ISSUE_TEMPLATE/hatch.md
 ```
 
@@ -89,7 +89,7 @@ Copy the `.github-intelligence` folder from the latest release into your repo ro
 ### 3. Run the full installation
 
 ```bash
-bun .github-intelligence/install/ISSUE-INTELLIGENCE-INSTALLER.ts
+bun .github-intelligence/install/github-intelligence-INSTALLER.ts
 cd .github-intelligence && bun install
 ```
 
@@ -112,10 +112,10 @@ If only the GitHub Actions workflow is broken or outdated:
 
 ```bash
 # Remove the old workflow
-rm .github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml
+rm .github/workflows/github-intelligence-WORKFLOW-AGENT.yml
 
 # Re-run the installer to regenerate it from the template
-bun .github-intelligence/install/ISSUE-INTELLIGENCE-INSTALLER.ts
+bun .github-intelligence/install/github-intelligence-INSTALLER.ts
 
 git add -A
 git commit -m "Regenerate issue-intelligence workflow"

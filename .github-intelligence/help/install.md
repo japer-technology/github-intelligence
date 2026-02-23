@@ -4,7 +4,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/ISSUE-INTELLIGENCE-LOGO.png" alt="Issue Intelligence" width="400">
+    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="400">
   </picture>
 </p>
 
@@ -25,11 +25,11 @@ Set up a fully functional AI agent in any GitHub repository in under 5 minutes. 
 Copy the `.github-intelligence` folder into the root of your repository. Then run the install script:
 
 ```bash
-bun .github-intelligence/install/ISSUE-INTELLIGENCE-INSTALLER.ts
+bun .github-intelligence/install/github-intelligence-INSTALLER.ts
 ```
 
 The installer will:
-- Create `.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml` — the GitHub Actions workflow that triggers the agent
+- Create `.github/workflows/github-intelligence-WORKFLOW-AGENT.yml` — the GitHub Actions workflow that triggers the agent
 - Create `.github/ISSUE_TEMPLATE/hatch.md` — an issue template for personality hatching
 - Create `.github-intelligence/AGENTS.md` — the agent identity file (if not already present)
 - Add a `memory.log merge=union` rule to `.gitattributes` for conflict-free memory logging
@@ -59,7 +59,7 @@ Go to your GitHub repository **Settings → Secrets and variables → Actions �
 | Groq | `GROQ_API_KEY` | [console.groq.com](https://console.groq.com/) |
 | OpenRouter | `OPENROUTER_API_KEY` | [openrouter.ai](https://openrouter.ai/) |
 
-Make sure the secret name in your workflow (`.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml`) matches. The default workflow template references `ANTHROPIC_API_KEY`.
+Make sure the secret name in your workflow (`.github/workflows/github-intelligence-WORKFLOW-AGENT.yml`) matches. The default workflow template references `ANTHROPIC_API_KEY`.
 
 ### 4. Commit and push
 
@@ -77,14 +77,14 @@ The 👀 reaction appears while the agent is working and disappears when it fini
 
 ## Automated Installation (Alternative)
 
-You can copy `ISSUE-INTELLIGENCE-INSTALLER.yml` to `.github/workflows/` and trigger the bootstrap workflow from the GitHub Actions tab. See [install/README.md](../install/README.md) for details on this approach.
+You can copy `github-intelligence-INSTALLER.yml` to `.github/workflows/` and trigger the bootstrap workflow from the GitHub Actions tab. See [install/README.md](../install/README.md) for details on this approach.
 
 ## What Gets Installed
 
 ```
 .github/
   workflows/
-    ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml                  # GitHub Actions workflow
+    github-intelligence-WORKFLOW-AGENT.yml                  # GitHub Actions workflow
   ISSUE_TEMPLATE/
     hatch.md                   # Personality hatching template
 .github-intelligence/
@@ -119,7 +119,7 @@ After pushing, open a test issue. You should see:
 If the workflow fails, check the Actions log for details. Common issues:
 
 - **Missing API key** — the agent posts a helpful comment explaining how to fix it
-- **Sentinel file missing** — ensure `.github-intelligence/ISSUE-INTELLIGENCE-ENABLED.md` exists (see [Enable](enable.md))
+- **Sentinel file missing** — ensure `.github-intelligence/github-intelligence-ENABLED.md` exists (see [Enable](enable.md))
 - **Permission denied** — only repository owners, members, and collaborators can trigger the agent
 
 ## Next Steps
