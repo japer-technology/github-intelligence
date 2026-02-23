@@ -522,3 +522,48 @@ describe("Requires-heart help documentation", () => {
     );
   });
 });
+
+// ── Intelligence capability folders ────────────────────────────────────────
+
+describe("Intelligence capability folders", () => {
+  const expectedFolders = [
+    { dir: ".github-intelligence-cron", title: "GitHub Intelligence Cron" },
+    { dir: ".github-intelligence-swarm", title: "GitHub Intelligence Swarm" },
+    { dir: ".github-intelligence-dashboard", title: "GitHub Intelligence Dashboard" },
+    { dir: ".github-intelligence-bridge", title: "GitHub Intelligence Bridge" },
+    { dir: ".github-intelligence-plugin", title: "GitHub Intelligence Plugin" },
+    { dir: ".github-intelligence-guardrail", title: "GitHub Intelligence Guardrail" },
+    { dir: ".github-intelligence-knowledge", title: "GitHub Intelligence Knowledge" },
+    { dir: ".github-intelligence-health", title: "GitHub Intelligence Health" },
+  ];
+
+  for (const { dir, title } of expectedFolders) {
+    it(`${dir}/ directory exists`, () => {
+      assert.ok(
+        fs.existsSync(path.join(REPO_ROOT, dir)),
+        `${dir}/ directory should exist`
+      );
+    });
+
+    it(`${dir}/README.md exists with correct title`, () => {
+      const readmePath = path.join(REPO_ROOT, dir, "README.md");
+      assert.ok(fs.existsSync(readmePath), `${dir}/README.md should exist`);
+      const content = fs.readFileSync(readmePath, "utf-8");
+      assert.ok(
+        content.includes(`# ${title}`),
+        `${dir}/README.md should have title "# ${title}"`
+      );
+    });
+
+    it(`${dir}/README.md includes the project logo`, () => {
+      const content = fs.readFileSync(
+        path.join(REPO_ROOT, dir, "README.md"),
+        "utf-8"
+      );
+      assert.ok(
+        content.includes("github-intelligence-LOGO.png"),
+        `${dir}/README.md should reference the project logo`
+      );
+    });
+  }
+});
