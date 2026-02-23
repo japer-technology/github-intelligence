@@ -8,9 +8,9 @@
   </picture>
 </p>
 
-### [🦞Quick Start](github-intelligence-QUICKSTART.md) · [🦞Internals](docs/github-intelligence-Internal-Mechanics.md) · [🦞Possibilities](docs/github-intelligence-Possibilities.md) · [🦞Road Map](docs/github-intelligence-Roadmap.md) · [🦞The Idea](docs/github-intelligence-The-Idea.md)
-
 > **New here?** Check the [Quick Start](github-intelligence-QUICKSTART.md) to get running in under 5 minutes.
+
+### [🦞Quick Start](github-intelligence-QUICKSTART.md) · [🦞Internals](docs/github-intelligence-Internal-Mechanics.md) · [🦞Possibilities](docs/github-intelligence-Possibilities.md) · [🦞Road Map](docs/github-intelligence-Roadmap.md) · [🦞The Idea](docs/github-intelligence-The-Idea.md)
 
 Powered by the [pi coding agent](https://github.com/badlogic/pi-mono). Every issue becomes a chat thread with an AI agent. Conversation history is committed to git, giving the agent long-term memory across sessions. It can search prior context, edit or summarize past conversations, and all changes are versioned.
 
