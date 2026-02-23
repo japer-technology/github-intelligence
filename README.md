@@ -1,6 +1,6 @@
 # .github-intelligence
 
-### An AI intelligence that runs entirely in GitHub.
+### Intelligence by using GitHub as AI Infrastructure.
 
 <p align="center">
   <picture>
