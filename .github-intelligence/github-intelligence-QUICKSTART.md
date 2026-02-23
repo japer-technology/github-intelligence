@@ -4,7 +4,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/ISSUE-INTELLIGENCE-LOGO.png" alt="Issue Intelligence" width="500">
+    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="500">
   </picture>
 </p>
 
@@ -21,7 +21,7 @@
 Copy the `.github-intelligence` folder into your repository root, then run the install script:
 
 ```bash
-bun .github-intelligence/install/ISSUE-INTELLIGENCE-INSTALLER.ts
+bun .github-intelligence/install/github-intelligence-INSTALLER.ts
 ```
 
 This sets up the GitHub Actions workflow and issue templates.
@@ -46,7 +46,7 @@ In your GitHub repo, go to **Settings → Secrets and variables → Actions** an
 | Mistral | `MISTRAL_API_KEY` | [console.mistral.ai](https://console.mistral.ai/) |
 | Groq | `GROQ_API_KEY` | [console.groq.com](https://console.groq.com/) |
 
-Then reference the secret in your workflow (`.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml`) as an environment variable in the **Run** step.
+Then reference the secret in your workflow (`.github/workflows/github-intelligence-WORKFLOW-AGENT.yml`) as an environment variable in the **Run** step.
 
 **4. Commit and push**
 
@@ -85,7 +85,7 @@ This is optional. The agent works without hatching, but it's more fun with a per
 | Path | Purpose |
 |------|---------|
 | `AGENTS.md` | Agent identity — name, personality, instructions |
-| `lifecycle/ISSUE-INTELLIGENCE-AGENT.ts` | Core orchestrator that runs on every issue |
+| `lifecycle/github-intelligence-AGENT.ts` | Core orchestrator that runs on every issue |
 | `.pi/settings.json` | LLM provider, model, and thinking level |
 | `.pi/APPEND_SYSTEM.md` | System prompt loaded every session |
 | `.pi/skills/` | Modular skill packages |
@@ -263,9 +263,9 @@ Requires `GROQ_API_KEY`.
 Requires `OPENROUTER_API_KEY`. Browse available models at [openrouter.ai](https://openrouter.ai/).
 </details>
 
-**Make it read-only** — add `--tools read,grep,find,ls` to the agent args in `lifecycle/ISSUE-INTELLIGENCE-AGENT.ts`.
+**Make it read-only** — add `--tools read,grep,find,ls` to the agent args in `lifecycle/github-intelligence-AGENT.ts`.
 
-**Filter by label** — edit `.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml` to only trigger on issues with a specific label.
+**Filter by label** — edit `.github/workflows/github-intelligence-WORKFLOW-AGENT.yml` to only trigger on issues with a specific label.
 
 ## Supported providers
 
@@ -287,4 +287,4 @@ Requires `OPENROUTER_API_KEY`. Browse available models at [openrouter.ai](https:
 ## Next steps
 
 - Read [the full README](README.md) for details on security, configuration, and how storage works
-- Explore [the onboarding docs](docs/ISSUE-INTELLIGENCE-Pi/ISSUE-INTELLIGENCE-Pi-README.md) for deep dives into architecture, capabilities, skills, and personality
+- Explore [the onboarding docs](docs/github-intelligence-Pi/github-intelligence-Pi-README.md) for deep dives into architecture, capabilities, skills, and personality

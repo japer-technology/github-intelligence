@@ -2,7 +2,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/ISSUE-INTELLIGENCE-LOGO.png" alt="Issue Intelligence" width="400">
+    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="400">
   </picture>
 </p>
 
@@ -31,10 +31,10 @@ Welcome to the Issue Intelligence help center. Everything you need to install, c
 ## Quick Links
 
 - [🦞 Issue Intelligence Home](../README.md)
-- [🦞 Quick Start](../ISSUE-INTELLIGENCE-QUICKSTART.md)
-- [🦞 Internal Mechanics](../docs/ISSUE-INTELLIGENCE-Internal-Mechanics.md)
-- [🦞 Roadmap](../docs/ISSUE-INTELLIGENCE-Roadmap.md)
-- [🦞 Possibilities](../docs/ISSUE-INTELLIGENCE-Possibilities.md)
+- [🦞 Quick Start](../github-intelligence-QUICKSTART.md)
+- [🦞 Internal Mechanics](../docs/github-intelligence-Internal-Mechanics.md)
+- [🦞 Roadmap](../docs/github-intelligence-Roadmap.md)
+- [🦞 Possibilities](../docs/github-intelligence-Possibilities.md)
 
 ---
 

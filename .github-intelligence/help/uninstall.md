@@ -4,7 +4,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/ISSUE-INTELLIGENCE-LOGO.png" alt="Issue Intelligence" width="400">
+    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="400">
   </picture>
 </p>
 
@@ -27,7 +27,7 @@ This removes everything: the agent code, configuration, session history, state, 
 ### 2. Remove the GitHub Actions workflow
 
 ```bash
-rm .github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml
+rm .github/workflows/github-intelligence-WORKFLOW-AGENT.yml
 ```
 
 This stops the agent from being triggered on new issues or comments.
@@ -70,8 +70,8 @@ git push
 
 If you want to stop the agent but preserve conversation history for reference:
 
-1. Delete `.github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml` — this prevents the agent from running
-2. Optionally delete `.github-intelligence/ISSUE-INTELLIGENCE-ENABLED.md` — this is the fail-safe disable (see [Disable](disable.md))
+1. Delete `.github/workflows/github-intelligence-WORKFLOW-AGENT.yml` — this prevents the agent from running
+2. Optionally delete `.github-intelligence/github-intelligence-ENABLED.md` — this is the fail-safe disable (see [Disable](disable.md))
 3. Keep `.github-intelligence/state/` for historical sessions
 
 The session files in `.github-intelligence/state/sessions/` are plain JSONL files and remain readable without Issue Intelligence installed.

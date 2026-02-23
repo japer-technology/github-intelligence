@@ -4,7 +4,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/ISSUE-INTELLIGENCE-LOGO.png" alt="Issue Intelligence" width="400">
+    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="400">
   </picture>
 </p>
 
@@ -17,7 +17,7 @@ Re-activate a previously disabled Issue Intelligence agent, or confirm that Issu
 Issue Intelligence uses a **fail-closed** security model controlled by a single sentinel file:
 
 ```
-.github-intelligence/ISSUE-INTELLIGENCE-ENABLED.md
+.github-intelligence/github-intelligence-ENABLED.md
 ```
 
 When this file exists in the repository, the agent is **enabled** and will respond to issues and comments. When it's missing, the agent is **disabled** and all workflow runs exit immediately at the Guard step.
@@ -29,13 +29,13 @@ When this file exists in the repository, the agent is **enabled** and will respo
 Recreate the sentinel file and push:
 
 ```bash
-cat > .github-intelligence/ISSUE-INTELLIGENCE-ENABLED.md << 'EOF'
+cat > .github-intelligence/github-intelligence-ENABLED.md << 'EOF'
 # .github-intelligence 🦞 Enabled
 
 ### Delete or rename this file to disable .github-intelligence
 EOF
 
-git add .github-intelligence/ISSUE-INTELLIGENCE-ENABLED.md
+git add .github-intelligence/github-intelligence-ENABLED.md
 git commit -m "Enable issue-intelligence"
 git push
 ```
@@ -45,7 +45,7 @@ git push
 Rename it back:
 
 ```bash
-mv .github-intelligence/ISSUE-INTELLIGENCE-DISABLED.md .github-intelligence/ISSUE-INTELLIGENCE-ENABLED.md
+mv .github-intelligence/github-intelligence-DISABLED.md .github-intelligence/github-intelligence-ENABLED.md
 git add -A
 git commit -m "Enable issue-intelligence"
 git push
@@ -55,7 +55,7 @@ git push
 
 1. Go to your repository on GitHub
 2. Click the **Actions** tab
-3. Select the **ISSUE-INTELLIGENCE-WORKFLOW-AGENT** workflow in the left sidebar
+3. Select the **github-intelligence-WORKFLOW-AGENT** workflow in the left sidebar
 4. Click **Enable workflow**
 
 > **Note:** If both the sentinel file is missing AND the workflow is disabled, you need to do both: restore the sentinel file and re-enable the workflow.
@@ -66,8 +66,8 @@ Check that all of the following are in place:
 
 | Check | How to Verify |
 |-------|---------------|
-| Sentinel file exists | `ls .github-intelligence/ISSUE-INTELLIGENCE-ENABLED.md` — file should be present |
-| Workflow exists | `ls .github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml` — file should be present |
+| Sentinel file exists | `ls .github-intelligence/github-intelligence-ENABLED.md` — file should be present |
+| Workflow exists | `ls .github/workflows/github-intelligence-WORKFLOW-AGENT.yml` — file should be present |
 | Workflow is active | Go to **Actions** tab — workflow should not show "This workflow is disabled" |
 | API key is set | Go to **Settings → Secrets and variables → Actions** — the provider secret should be listed |
 
@@ -76,7 +76,7 @@ Check that all of the following are in place:
 Open a test issue or comment on an existing one. You should see:
 
 1. A workflow run appears in the **Actions** tab
-2. The Guard step passes (shows "Issue Intelligence enabled — ISSUE-INTELLIGENCE-ENABLED.md found.")
+2. The Guard step passes (shows "Issue Intelligence enabled — github-intelligence-ENABLED.md found.")
 3. A 👀 reaction appears on the issue
 4. The agent posts a reply
 

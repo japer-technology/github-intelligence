@@ -1,12 +1,12 @@
 /**
- * ISSUE-INTELLIGENCE-INSTALLER.ts — One-time setup script for issue-intelligence.
+ * github-intelligence-INSTALLER.ts — One-time setup script for issue-intelligence.
  *
  * Copies the GitHub Actions workflow, issue templates, and git attributes
  * from `.github-intelligence/install` into the standard locations the repo needs to function.
  * Existing files are never overwritten — only missing ones are installed.
  *
  * Usage:
- *   bun .github-intelligence/install/ISSUE-INTELLIGENCE-INSTALLER.ts
+ *   bun .github-intelligence/install/github-intelligence-INSTALLER.ts
  */
 
 import { existsSync, mkdirSync, cpSync, readFileSync, writeFileSync } from "fs";
@@ -66,16 +66,16 @@ console.log("🔧 Installing issue-intelligence into this repository...\n");
 console.log("Workflows:");
 ensureDir(resolve(repoRoot, ".github", "workflows"));
 copyIfMissing(
-  resolve(bootstrapDir, "ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml"),
-  resolve(repoRoot, ".github", "workflows", "ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml"),
-  ".github/workflows/ISSUE-INTELLIGENCE-WORKFLOW-AGENT.yml"
+  resolve(bootstrapDir, "github-intelligence-WORKFLOW-AGENT.yml"),
+  resolve(repoRoot, ".github", "workflows", "github-intelligence-WORKFLOW-AGENT.yml"),
+  ".github/workflows/github-intelligence-WORKFLOW-AGENT.yml"
 );
 
 // --- Issue templates --------------------------------------------------
 console.log("\nIssue templates:");
 ensureDir(resolve(repoRoot, ".github", "ISSUE_TEMPLATE"));
 copyIfMissing(
-  resolve(bootstrapDir, "ISSUE-INTELLIGENCE-TEMPLATE-HATCH.md"),
+  resolve(bootstrapDir, "github-intelligence-TEMPLATE-HATCH.md"),
   resolve(repoRoot, ".github", "ISSUE_TEMPLATE", "hatch.md"),
   ".github/ISSUE_TEMPLATE/hatch.md"
 );
@@ -83,7 +83,7 @@ copyIfMissing(
 // --- Agent identity ---------------------------------------------------
 console.log("\nAgent identity:");
 ensureDir(resolve(repoRoot, ".github-intelligence"));
-copyIfMissing(resolve(bootstrapDir, "ISSUE-INTELLIGENCE-AGENTS.md"), resolve(repoRoot, ".github-intelligence", "AGENTS.md"), ".github-intelligence/AGENTS.md");
+copyIfMissing(resolve(bootstrapDir, "github-intelligence-AGENTS.md"), resolve(repoRoot, ".github-intelligence", "AGENTS.md"), ".github-intelligence/AGENTS.md");
 
 // --- Git attributes --------------------------------------------------
 // `memory.log merge=union` tells git to union-merge the append-only

@@ -4,7 +4,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/ISSUE-INTELLIGENCE-LOGO.png" alt="Issue Intelligence" width="400">
+    <img src="https://raw.githubusercontent.com/japer-technology/blank-with-issue-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="400">
   </picture>
 </p>
 
@@ -23,7 +23,7 @@ When the requires-heart gate is **active**:
 
 ```
 New issue opened
-    → Guard checks for ISSUE-INTELLIGENCE-HEART-REQUIRED.md file
+    → Guard checks for github-intelligence-HEART-REQUIRED.md file
     → File found → checks issue for ❤️ reaction
     → No ❤️ → workflow exits (issue is skipped)
     → ❤️ found → agent processes the issue
@@ -33,11 +33,11 @@ New issue opened
 
 ## Enable the Requires-Heart Gate
 
-Create the file `ISSUE-INTELLIGENCE-HEART-REQUIRED.md` in the `.github-intelligence/` directory:
+Create the file `github-intelligence-HEART-REQUIRED.md` in the `.github-intelligence/` directory:
 
 ```bash
-touch .github-intelligence/ISSUE-INTELLIGENCE-HEART-REQUIRED.md
-git add .github-intelligence/ISSUE-INTELLIGENCE-HEART-REQUIRED.md
+touch .github-intelligence/github-intelligence-HEART-REQUIRED.md
+git add .github-intelligence/github-intelligence-HEART-REQUIRED.md
 git commit -m "Enable requires-heart gate"
 git push
 ```
@@ -46,10 +46,10 @@ The file's contents don't matter — only its presence is checked.
 
 ## Disable the Requires-Heart Gate
 
-Remove the `ISSUE-INTELLIGENCE-HEART-REQUIRED.md` file from the `.github-intelligence/` directory:
+Remove the `github-intelligence-HEART-REQUIRED.md` file from the `.github-intelligence/` directory:
 
 ```bash
-rm .github-intelligence/ISSUE-INTELLIGENCE-HEART-REQUIRED.md
+rm .github-intelligence/github-intelligence-HEART-REQUIRED.md
 git add -A
 git commit -m "Disable requires-heart gate"
 git push
