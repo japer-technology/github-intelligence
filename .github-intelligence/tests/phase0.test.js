@@ -561,7 +561,7 @@ describe("Intelligence capability folders", () => {
         "utf-8"
       );
       assert.ok(
-        content.includes("github-intelligence-LOGO.png"),
+        content.includes("logo.png"),
         `${dir}/README.md should reference the project logo`
       );
     });
