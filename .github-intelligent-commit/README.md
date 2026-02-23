@@ -1,6 +1,4 @@
-# github-intelligent-commit
-
-### Intelligent Commits by using GitHub as AI Infrastructure.
+# GitHub Intelligent Commit
 
 <p align="center">
   <picture>
