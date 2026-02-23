@@ -2,7 +2,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/github-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Code Review Intelligence">
+    <img src="https://raw.githubusercontent.com/japer-technology/github-intelligence/main/.github-intelligence/logo.png" alt="Code Review Intelligence">
   </picture>
 </p>
 

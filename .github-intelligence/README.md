@@ -170,6 +170,6 @@ Thanks to [ymichael](https://github.com/ymichael) for nerdsniping me with the id
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/github-intelligence/main/.github-intelligence/github-intelligence-LOGO.png" alt="Issue Intelligence" width="100px">
+    <img src="https://raw.githubusercontent.com/japer-technology/github-intelligence/main/.github-intelligence/logo.png" alt="Issue Intelligence" width="100px">
   </picture>
 </p>
